@@ -7,11 +7,13 @@ plugins {
 
 dependencies{
 
+    // Coroutines
     Dependencies.Coroutines.apply {
         //Coroutines
         implementation(coroutines)
     }
 
+    // Inject
     Dependencies.Inject.apply {
         //Inject
         implementation(inject)

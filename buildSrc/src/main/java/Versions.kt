@@ -22,4 +22,6 @@ object Versions {
     const val map = "18.1.0"
     const val legasySupport = "1.0.0"
     const val fireProtolite = "18.0.0"
+    const val googleGson = "2.9.0"
+    const val recyclerView = "1.3.0"
 }

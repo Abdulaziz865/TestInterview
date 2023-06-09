@@ -63,4 +63,12 @@ object Dependencies {
     object Map {
         const val map = "com.google.android.gms:play-services-maps:${Versions.map}"
     }
+
+    object Gson {
+        const val googleGson = "com.google.code.gson:gson:${Versions.googleGson}"
+    }
+
+    object RecyclerView{
+        const val recyclerView = "androidx.recyclerview:recyclerview:${Versions.recyclerView}"
+    }
 }

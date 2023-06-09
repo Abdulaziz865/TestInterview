@@ -1,4 +1,4 @@
-package com.example.presentation.ui.fragments.detail
+package com.example.presentation.ui.fragments.films.detail
 
 import com.example.domain.usecases.FetchDetailFilmUseCase
 import com.example.presentation.base.BaseViewModel

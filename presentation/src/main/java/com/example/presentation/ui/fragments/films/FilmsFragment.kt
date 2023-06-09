@@ -1,6 +1,8 @@
-package com.example.presentation.ui.fragments
+package com.example.presentation.ui.fragments.films
 
 import android.util.Log
+import android.view.View
+import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
@@ -39,13 +41,13 @@ class FilmsFragment : BaseFragment<FragmentFilmsBinding, FilmsViewModel>(R.layou
                 viewModel.filmsState.collect { uiState ->
                     when (uiState) {
                         is UIState.Error -> {
-                            Log.e("error" , uiState.error)
+                            Toast.makeText(requireContext(), uiState.error, Toast.LENGTH_SHORT).show()
                         }
                         is UIState.Loading -> {
-                            Log.e("load" , "LOADING")
+                            binding.progressBar.visibility = View.VISIBLE
                         }
                         is UIState.Success -> {
-                            Log.e("success" , "SUCCESS!!!")
+                            binding.progressBar.visibility = View.INVISIBLE
                             filmsAdapter.submitList(uiState.data)
                         }
                     }
@@ -55,6 +57,10 @@ class FilmsFragment : BaseFragment<FragmentFilmsBinding, FilmsViewModel>(R.layou
     }
 
     private fun onClickItem(id: String) {
-        findNavController().navigate(FilmsFragmentDirections.actionFilmsFragmentToDetailFilmsFragment(id))
+        findNavController().navigate(
+            FilmsFragmentDirections.actionFilmsFragmentToDetailFilmsFragment(
+                id
+            )
+        )
     }
 }

@@ -1,8 +1,8 @@
 package com.example.testinterview.di
 
-import com.example.data.repositories.DetailFilmsRepositoryImpl
+import com.example.data.repositories.DetailFilmRepositoryImpl
 import com.example.data.repositories.FilmsRepositoryImpl
-import com.example.domain.repositories.DetailFilmsRepository
+import com.example.domain.repositories.DetailFilmRepository
 import com.example.domain.repositories.FilmsRepository
 import dagger.Binds
 import dagger.Module
@@ -17,5 +17,5 @@ abstract class RepositoriesModule {
     abstract fun bindFilmsRepository(filmsRepositoryImpl: FilmsRepositoryImpl): FilmsRepository
 
     @Binds
-    abstract fun bindDetailFilmRepository(detailFilmsRepositoryImpl: DetailFilmsRepositoryImpl): DetailFilmsRepository
+    abstract fun bindDetailFilmRepository(detailFilmsRepositoryImpl: DetailFilmRepositoryImpl): DetailFilmRepository
 }

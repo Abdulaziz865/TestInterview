@@ -18,7 +18,7 @@ android {
         versionCode = Config.versionCode
         versionName = Config.versionName
 
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner = Config.testRunner
     }
 
     buildTypes {
@@ -41,30 +41,32 @@ android {
 
 dependencies {
 
+    //Hilt
     Dependencies.Hilt.apply {
-        //Hilt
         implementation(hilt)
         kapt(hiltCompiler)
     }
 
-// Domain
-    implementation(project(":domain"))
-
     // Retrofit
-    implementation("com.squareup.retrofit2:retrofit:2.9.0")
-    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+    Dependencies.Retrofit.apply {
+        implementation(retrofit)
+        implementation(gsonConvertor)
+    }
 
     // Gson convertor
-    implementation("com.google.code.gson:gson:2.9.0")
+    implementation(Dependencies.Gson.googleGson)
 
     //OkHttp client
-    implementation("com.squareup.okhttp3:okhttp-bom:4.10.0")
+    Dependencies.OkHttpClient.apply {
+        implementation(bomHttp)
+        implementation(okHttp)
+        implementation(httpInterceptor)
+    }
 
-    // define any required OkHttp artifacts without version
-    implementation("com.squareup.okhttp3:okhttp")
-    implementation("com.squareup.okhttp3:logging-interceptor")
-
+    // Data
     implementation(project(":data"))
+    // Domain
     implementation(project(":domain"))
+    // Presentation
     implementation(project(":presentation"))
 }

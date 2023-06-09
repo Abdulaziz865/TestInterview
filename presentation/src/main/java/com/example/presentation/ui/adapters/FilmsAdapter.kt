@@ -5,15 +5,16 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.domain.models.FilmsResponse
 import com.example.presentation.databinding.ItemFilmsBinding
+import com.example.presentation.models.FilmsResponseUi
 
-class FilmsAdapter(private val onClickListener: (id: String) -> Unit) : ListAdapter<FilmsResponse, FilmsAdapter.DetailFilmsViewHolder>(diffUtil) {
+class FilmsAdapter(private val onClickListener: (id: String) -> Unit) :
+    ListAdapter<FilmsResponseUi, FilmsAdapter.DetailFilmsViewHolder>(diffUtil) {
 
     inner class DetailFilmsViewHolder(private val binding: ItemFilmsBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun onBind(model: FilmsResponse) {
+        fun onBind(model: FilmsResponseUi) {
             binding.originalTitle.text = model.originalTitle
             binding.title.text = model.title
         }
@@ -39,12 +40,18 @@ class FilmsAdapter(private val onClickListener: (id: String) -> Unit) : ListAdap
     }
 
     companion object {
-        val diffUtil = object : DiffUtil.ItemCallback<FilmsResponse>() {
-            override fun areItemsTheSame(oldItem: FilmsResponse, newItem: FilmsResponse): Boolean {
+        val diffUtil = object : DiffUtil.ItemCallback<FilmsResponseUi>() {
+            override fun areItemsTheSame(
+                oldItem: FilmsResponseUi,
+                newItem: FilmsResponseUi
+            ): Boolean {
                 return oldItem.id == newItem.id
             }
 
-            override fun areContentsTheSame(oldItem: FilmsResponse, newItem: FilmsResponse): Boolean {
+            override fun areContentsTheSame(
+                oldItem: FilmsResponseUi,
+                newItem: FilmsResponseUi
+            ): Boolean {
                 return oldItem == newItem
             }
         }

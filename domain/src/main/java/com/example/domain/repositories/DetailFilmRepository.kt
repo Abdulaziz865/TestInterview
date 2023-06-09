@@ -4,7 +4,7 @@ import com.example.domain.models.FilmsResponse
 import com.example.domain.utils.Resource
 import kotlinx.coroutines.flow.Flow
 
-interface DetailFilmsRepository {
+interface DetailFilmRepository {
 
     fun fetchDetailFilms(id: String): Flow<Resource<FilmsResponse>>
 }

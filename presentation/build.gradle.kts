@@ -15,7 +15,7 @@ android {
     defaultConfig {
         minSdk = Config.minSdk
 
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner = Config.testRunner
         consumerProguardFiles("consumer-rules.pro")
     }
 
@@ -41,22 +41,32 @@ android {
 
 dependencies {
 
+    // View Binding Property Delegate
     Dependencies.ViewBinding.apply {
         // ViewBindingPropertyDelegate
         implementation(viewBinding)
     }
 
+    // Navigation
     Dependencies.Navigation.apply {
         // Navigation
         implementation(navigationFragment)
         implementation(navigation)
     }
 
-    implementation("androidx.legacy:legacy-support-v4:1.0.0")
-    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.6.1")
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1")
-    implementation("androidx.recyclerview:recyclerview:1.3.0")
+    //Lifecycle
+    Dependencies.Lifecycles.apply {
+        implementation(legasySupport)
+        implementation(lifecycles)
+        implementation(lifecycleViewModel)
+    }
 
+    // RecyclerView
+    Dependencies.RecyclerView.apply {
+        implementation(recyclerView)
+    }
+
+    // Ui Components
     Dependencies.UiComponents.apply {
         implementation(core)
         // AppCompat
@@ -74,8 +84,10 @@ dependencies {
     }
 
     //Glide
-    implementation("com.github.bumptech.glide:glide:4.14.2")
-    annotationProcessor("com.github.bumptech.glide:compiler:4.14.2")
+    Dependencies.Glide.apply {
+        implementation(glide)
+        annotationProcessor(glideCompiler)
+    }
 
     implementation(project (":domain"))
 }

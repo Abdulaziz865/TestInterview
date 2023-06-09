@@ -6,4 +6,5 @@ object Config {
     const val versionCode = 1
     const val versionName = "1.0"
     const val jvmTarget = "1.8"
+    const val testRunner = "androidx.test.runner.AndroidJUnitRunner"
 }
